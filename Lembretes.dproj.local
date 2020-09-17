@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2020/09/16 14:30:13.775,=E:\Unit1.pas</Transaction>
+    <Transaction>2020/09/16 14:30:45.764,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\uFrmCadastro.pas=E:\Unit1.pas</Transaction>
+    <Transaction>2020/09/16 14:30:45.764,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\uFrmCadastro.dfm=E:\Unit1.dfm</Transaction>
+    <Transaction>2020/09/16 14:30:56.296,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Lembretes.dproj=E:\Project1.dproj</Transaction>
+    <Transaction>2020/09/16 14:41:30.658,=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit2.pas</Transaction>
+    <Transaction>2020/09/16 14:42:54.243,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\uFrmInserirLembrete.dfm=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit2.dfm</Transaction>
+    <Transaction>2020/09/16 14:42:54.243,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\uFrmInserirLembrete.pas=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit2.pas</Transaction>
+    <Transaction>2020/09/16 14:50:47.038,=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit3.pas</Transaction>
+    <Transaction>2020/09/16 14:57:52.805,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\uFrmEditar.dfm=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit3.dfm</Transaction>
+    <Transaction>2020/09/16 14:57:52.805,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\uFrmEditar.pas=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit3.pas</Transaction>
+    <Transaction>2020/09/16 15:04:55.372,=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit1.pas</Transaction>
+    <Transaction>2020/09/16 15:06:42.505,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\uDM.dfm=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit1.dfm</Transaction>
+    <Transaction>2020/09/16 15:06:42.505,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\uDM.pas=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit1.pas</Transaction>
+    <Transaction>2020/09/16 15:11:04.839,=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit1.pas</Transaction>
+    <Transaction>2020/09/16 15:12:19.313,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\DAO\uBaseDAO.pas=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit1.pas</Transaction>
+    <Transaction>2020/09/16 16:21:15.851,=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit4.pas</Transaction>
+    <Transaction>2020/09/16 16:21:27.120,=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit1.pas</Transaction>
+    <Transaction>2020/09/16 16:22:21.555,C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\MODEL\uLembrete.pas=C:\Users\guilh\Desktop\Projetos\Aplicacao_Lembrete\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
