@@ -115,7 +115,7 @@ object Form1: TForm1
       Left = 144
       Top = 8
       Width = 313
-      Height = 25
+      Height = 21
       TabOrder = 0
       TextHint = 'Digite o titulo da Busca'
     end
@@ -321,7 +321,26 @@ object Form1: TForm1
     Top = 94
     Width = 615
     Height = 220
-    Columns = <>
+    Columns = <
+      item
+        Caption = 'ID_Lembrete'
+        Width = 80
+      end
+      item
+        Caption = 'T'#237'tulo'
+        Width = 150
+      end
+      item
+        Caption = 'Data/Hora'
+        Width = 80
+      end>
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 3
+    ViewStyle = vsReport
   end
 end

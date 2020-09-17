@@ -7,7 +7,8 @@ uses
   uFrmEditar in 'uFrmEditar.pas' {Form3},
   uDM in 'uDM.pas' {DM: TDataModule},
   uBaseDAO in 'DAO\uBaseDAO.pas',
-  uLembrete in 'MODEL\uLembrete.pas';
+  uLembrete in 'MODEL\uLembrete.pas',
+  uLembreteDAO in 'DAO\uLembreteDAO.pas';
 
 {$R *.res}
 

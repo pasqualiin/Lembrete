@@ -1,7 +1,7 @@
 object DM: TDM
   OldCreateOrder = False
-  Height = 222
-  Width = 320
+  Height = 225
+  Width = 323
   object Conexao: TFDConnection
     Params.Strings = (
       'Database=DBLembrete'
@@ -9,7 +9,7 @@ object DM: TDM
       'Password=123456'
       'Server=localhost'
       'DriverID=PG')
-    Left = 48
-    Top = 72
+    Left = 120
+    Top = 104
   end
 end

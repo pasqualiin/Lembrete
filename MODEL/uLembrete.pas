@@ -16,14 +16,15 @@ type
     procedure setTitulo(Value: String);
     procedure setDescricao(Value: String);
     procedure setDataHora(Value: TDateTime);
-    procedure setIDPessoa(Value: integer);
+    procedure setIDLembrete(Value: integer);
 
     function getTitulo: string;
     function getDescricao: string;
     function getDataHora: TDateTime;
-    function getIDPessoa: integer;
+    function getIDLembrete: integer;
 
   public
+    property IDLembrete: integer read getIDLembrete write setIDLembrete;
     property titulo: string read getTitulo write setTitulo;
     property descricao: string read getDescricao write setDescricao;
     property dataHora: TDateTime read getDataHora write setDataHora;
@@ -51,7 +52,7 @@ begin
   Result := FDescricao;
 end;
 
-function TLembrete.getIDPessoa: integer;
+function TLembrete.getIDLembrete: integer;
 begin
   Result := FIDPessoa;
 end;
@@ -71,7 +72,7 @@ begin
   FDescricao := Value;
 end;
 
-procedure TLembrete.setIDPessoa(Value: integer);
+procedure TLembrete.setIDLembrete(Value: integer);
 begin
   FIDPessoa := Value;
 end;
