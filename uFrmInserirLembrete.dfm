@@ -11,6 +11,8 @@ object FrmInserirLembrete: TFrmInserirLembrete
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -61,10 +63,11 @@ object FrmInserirLembrete: TFrmInserirLembrete
     end
     object BtnSalvar: TSpeedButton
       Left = 24
-      Top = 328
+      Top = 320
       Width = 105
       Height = 38
       Caption = 'Salvar'
+      OnClick = BtnSalvarClick
     end
     object EdtTitulo: TEdit
       Left = 112

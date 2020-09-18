@@ -3,9 +3,10 @@ unit uFrmInserirLembrete;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ComCtrls, Vcl.StdCtrls,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, uLembreteDAO, uLembrete;
 
 type
   TFrmInserirLembrete = class(TForm)
@@ -17,6 +18,10 @@ type
     Label3: TLabel;
     DTDataHora: TDateTimePicker;
     BtnSalvar: TSpeedButton;
+    procedure BtnSalvarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure PreencherLembrete;
   private
     { Private declarations }
   public
@@ -25,9 +30,47 @@ type
 
 var
   FrmInserirLembrete: TFrmInserirLembrete;
+  LembreteDAO: TLembreteDAO;
+  Lembrete: Tlembrete;
 
 implementation
 
 {$R *.dfm}
+
+procedure TFrmInserirLembrete.BtnSalvarClick(Sender: TObject);
+begin
+  PreencherLembrete;
+  if LembreteDAO.Inserir(Lembrete) then
+  begin
+    ShowMessage('Registro Inserido com Sucesso!!!');
+  end;
+end;
+
+procedure TFrmInserirLembrete.FormCreate(Sender: TObject);
+begin
+  LembreteDAO := TLembreteDAO.Create;
+  Lembrete := Tlembrete.Create;
+  DTDataHora.DateTime := Now;
+end;
+
+procedure TFrmInserirLembrete.FormDestroy(Sender: TObject);
+begin
+  Try
+    if Assigned(LembreteDAO) then
+      FreeAndNil(LembreteDAO);
+    if Assigned(Lembrete) then
+      FreeAndNil(Lembrete);
+  except
+    on e: exception do
+      raise exception.Create(e.Message);
+  End;
+end;
+
+procedure TFrmInserirLembrete.PreencherLembrete;
+begin
+  Lembrete.titulo := EdtTitulo.Text;
+  Lembrete.descricao := MDescricao.Text;
+  Lembrete.dataHora := DTDataHora.DateTime;
+end;
 
 end.

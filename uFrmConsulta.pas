@@ -66,8 +66,10 @@ end;
 procedure TFormConsulta.CarregarColecao;
 begin
   Try
-
-  Finally
+    PreencherListView(LembreteDAO.ListarPorTitulo(EdtBuscaTitulo.Text));
+  except
+    on e: exception do
+      raise exception.Create(e.Message);
 
   End;
 end;

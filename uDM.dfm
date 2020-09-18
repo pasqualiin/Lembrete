@@ -9,7 +9,9 @@ object DM: TDM
       'Password=123456'
       'Server=localhost'
       'DriverID=PG')
+    Connected = True
+    LoginPrompt = False
     Left = 120
-    Top = 104
+    Top = 88
   end
 end
