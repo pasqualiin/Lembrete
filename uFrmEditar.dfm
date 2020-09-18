@@ -1,4 +1,4 @@
-object Form3: TForm3
+object FrmEditar: TFrmEditar
   Left = 0
   Top = 0
   Caption = 'Editar Lembretes'
@@ -20,10 +20,6 @@ object Form3: TForm3
     Height = 366
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 136
-    ExplicitTop = 136
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Label1: TLabel
       Left = 56
       Top = 28

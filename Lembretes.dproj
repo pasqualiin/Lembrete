@@ -98,16 +98,16 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="uFrmCadastro.pas">
-            <Form>Form1</Form>
+        <DCCReference Include="uFrmConsulta.pas">
+            <Form>FormConsulta</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uFrmInserirLembrete.pas">
-            <Form>Form2</Form>
+            <Form>FrmInserirLembrete</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uFrmEditar.pas">
-            <Form>Form3</Form>
+            <Form>FrmEditar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uDM.pas">

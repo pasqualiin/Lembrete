@@ -8,7 +8,7 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TForm3 = class(TForm)
+  TFrmEditar = class(TForm)
     Label1: TLabel;
     Panel1: TPanel;
     EdtTitulo: TEdit;
@@ -25,7 +25,7 @@ type
   end;
 
 var
-  Form3: TForm3;
+  FrmEditar: TFrmEditar;
 
 implementation
 

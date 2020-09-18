@@ -8,7 +8,7 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TForm2 = class(TForm)
+  TFrmInserirLembrete = class(TForm)
     Panel1: TPanel;
     EdtTitulo: TEdit;
     Label1: TLabel;
@@ -24,7 +24,7 @@ type
   end;
 
 var
-  Form2: TForm2;
+  FrmInserirLembrete: TFrmInserirLembrete;
 
 implementation
 

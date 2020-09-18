@@ -1,4 +1,4 @@
-object Form2: TForm2
+object FrmInserirLembrete: TFrmInserirLembrete
   Left = 0
   Top = 0
   Caption = 'Inserir Lembretes'
@@ -20,14 +20,10 @@ object Form2: TForm2
     Height = 366
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 392
-    ExplicitTop = 120
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Label1: TLabel
       Left = 24
       Top = 25
-      Width = 41
+      Width = 32
       Height = 16
       Caption = 'T'#237'tulo'
       Font.Charset = DEFAULT_CHARSET

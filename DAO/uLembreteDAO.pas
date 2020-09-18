@@ -66,8 +66,13 @@ end;
 
 function TLembreteDAO.ListarPorTitulo(pConteudo: string)
   : TObjectList<TLembrete>;
+var
+  SQL: string;
 begin
-
+  SQL := 'SELECT idlembrete, titulo, dataHora FROM Lembretes WHERE titulo = ' +
+    QuotedStr(pConteudo) + ' order by dataHora';
+  ExecutarComando(SQL);
+  Result := TObjectList<TLembrete>;
 end;
 
 procedure TLembreteDAO.PreencherColecao(Ds: TFDQuery);
