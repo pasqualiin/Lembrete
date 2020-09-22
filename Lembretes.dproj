@@ -106,7 +106,7 @@
             <Form>FrmInserirLembrete</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uFrmEditar.pas">
+        <DCCReference Include="uFrmEditarLembrete.pas">
             <Form>FrmEditar</Form>
             <FormType>dfm</FormType>
         </DCCReference>

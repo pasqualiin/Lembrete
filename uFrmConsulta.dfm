@@ -112,6 +112,7 @@ object FormConsulta: TFormConsulta
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFCAAC
         A9C9ABA8C9ABA8C9AAA7C9A9A6C8A8A5C7A8A5C8A8A5C8A8A5C8A8A5C8A8A5C8
         A8A5C8A8A5FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      OnClick = BtnBuscarClick
     end
     object EdtBuscaTitulo: TEdit
       Left = 144
@@ -346,5 +347,6 @@ object FormConsulta: TFormConsulta
     ParentFont = False
     TabOrder = 3
     ViewStyle = vsReport
+    OnDblClick = ListView1DblClick
   end
 end

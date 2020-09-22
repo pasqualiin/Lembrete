@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.Buttons, Vcl.StdCtrls,
   Vcl.ExtCtrls, uLembreteDAO, System.Generics.Collections, uLembrete, uDM,
-  uFrmInserirLembrete, FireDAC.DApt, uFrmEditar;
+  uFrmInserirLembrete, FireDAC.DApt, uFrmEditarLembrete;
 
 type
   TFormConsulta = class(TForm)
@@ -25,6 +25,8 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
+    procedure BtnBuscarClick(Sender: TObject);
+    procedure ListView1DblClick(Sender: TObject);
   private
     { Private declarations }
     LembreteDAO: TLembreteDAO;
@@ -42,13 +44,22 @@ implementation
 {$R *.dfm}
 { TForm1 }
 
+procedure TFormConsulta.BtnBuscarClick(Sender: TObject);
+begin
+  LembreteDAO.ListarPorTitulo(EdtBuscaTitulo.Text);
+  CarregarColecao;
+
+end;
+
 procedure TFormConsulta.BtnEditarClick(Sender: TObject);
 begin
   try
-    FrmEditar := TFrmEditar.Create(Self);
-    FrmEditar.ShowModal;
+    FrmEditarLembrete := TFrmEditar.Create(Self,
+      TLembrete(ListView1.ItemFocused.Data));
+    FrmEditarLembrete.ShowModal;
+    CarregarColecao;
   finally
-    FreeAndNil(FrmEditar);
+    FreeAndNil(FrmEditarLembrete);
   end;
 end;
 
@@ -78,6 +89,7 @@ procedure TFormConsulta.FormCreate(Sender: TObject);
 begin
   DM := TDM.Create(Self);
   LembreteDAO := TLembreteDAO.Create;
+  CarregarColecao;
 end;
 
 procedure TFormConsulta.FormDestroy(Sender: TObject);
@@ -91,6 +103,18 @@ begin
     on e: exception do
       raise exception.Create(e.Message);
   End;
+end;
+
+procedure TFormConsulta.ListView1DblClick(Sender: TObject);
+begin
+  try
+    FrmEditarLembrete := TFrmEditar.Create(Self,
+      TLembrete(ListView1.ItemFocused.Data));
+    FrmEditarLembrete.ShowModal;
+    CarregarColecao;
+  finally
+    FreeAndNil(FrmEditarLembrete);
+  end;
 end;
 
 procedure TFormConsulta.PreencherListView(pListaLembrete: TList<TLembrete>);

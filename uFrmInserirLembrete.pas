@@ -44,6 +44,7 @@ begin
   begin
     ShowMessage('Registro Inserido com Sucesso!!!');
   end;
+  Close;
 end;
 
 procedure TFrmInserirLembrete.FormCreate(Sender: TObject);

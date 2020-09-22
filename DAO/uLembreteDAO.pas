@@ -50,14 +50,21 @@ var
 begin
   SQL := 'INSERT INTO lembretes(idlembrete, titulo, descricao, datahora) values ('
     + 'default' + ',' + QuotedStr(pLembrete.titulo) + ',' +
-    QuotedStr(pLembrete.descricao) + ',' + 'current_timestamp'
-  { QuotedStr(FormatDateTime('yyyy-mm-dd hh:mm', pLembrete.dataHora) } + ')';
+    QuotedStr(pLembrete.descricao) + ',' +
+    QuotedStr(FormatDateTime('dd,mm,yyyy hh:mm', pLembrete.dataHora)) + ')';
   Result := ExecutarComando(SQL) > 0
 end;
 
 function TLembreteDAO.Alterar(pLembrete: TLembrete): Boolean;
+var
+  SQL: string;
 begin
+  SQL := ' UPDATE lembretes set titulo = ' + QuotedStr(pLembrete.titulo) +
+    ', descricao = ' + QuotedStr(pLembrete.descricao) + ', datahora = ' +
+    QuotedStr(FormatDateTime('yyyy-mm-dd hh:mm', pLembrete.dataHora)) +
+    ' WHERE idlembrete = ' + IntToStr(pLembrete.IDLembrete);
 
+  Result := ExecutarComando(SQL) > 0;
 end;
 
 function TLembreteDAO.Deletar(pLembrete: TLembrete): Boolean;
@@ -70,18 +77,25 @@ function TLembreteDAO.ListarPorTitulo(pConteudo: string)
 var
   SQL: string;
 begin
-  SQL := ' SELECT F.IDLembrete, F.Titulo, F.DataHora FROM F Lembretes';
+  Result := Nil;
+  SQL := 'SELECT F.idlembrete, F.titulo, F.descricao, ' +
+    ' F.datahora FROM lembretes F';
+
   if pConteudo = '' then
   begin
-    SQL := SQL + 'WHERE F.DataHora >=' +
+    SQL := SQL + ' WHERE F.datahora >= ' +
       QuotedStr(FormatDateTime('yyyy-mm-dd', Now));
   end
+
   else
+
   begin
-    SQL := SQL + 'WHERE F.Titulo LIKE ' + QuotedStr('%' + pConteudo + '%');
+    SQL := SQL + ' WHERE F.titulo LIKE ' + QuotedStr('%' + pConteudo + '%');
   end;
-  SQL := SQL + ' ORDER BY F.DataHora';
+
+  SQL := SQL + ' ORDER BY F.datahora ';
   FQuery := RetornarDataSet(SQL);
+
   if not(FQuery.IsEmpty) then
   begin
     PreencherColecao(FQuery);
