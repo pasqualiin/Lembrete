@@ -4,7 +4,7 @@ interface
 
 uses
   uBaseDAO, uLembrete, FireDAC.Comp.Client, System.Generics.Collections,
-  System.SysUtils;
+  System.SysUtils, DB;
 
 type
   TLembreteDAO = class(TBaseDAO)
@@ -15,7 +15,7 @@ type
 
   public
     constructor Create;
-    destructor Destroy;
+    destructor Destroy; override;
     function Inserir(pLembrete: TLembrete): Boolean;
     function Deletar(pLembrete: TLembrete): Boolean;
     function Alterar(pLembrete: TLembrete): Boolean;
@@ -59,7 +59,7 @@ function TLembreteDAO.Alterar(pLembrete: TLembrete): Boolean;
 var
   SQL: string;
 begin
-  SQL := ' UPDATE lembretes set titulo = ' + QuotedStr(pLembrete.titulo) +
+  SQL := ' UPDATE lembretes SET titulo = ' + QuotedStr(pLembrete.titulo) +
     ', descricao = ' + QuotedStr(pLembrete.descricao) + ', datahora = ' +
     QuotedStr(FormatDateTime('yyyy-mm-dd hh:mm', pLembrete.dataHora)) +
     ' WHERE idlembrete = ' + IntToStr(pLembrete.IDLembrete);
@@ -68,8 +68,12 @@ begin
 end;
 
 function TLembreteDAO.Deletar(pLembrete: TLembrete): Boolean;
+var
+  SQL: string;
 begin
-
+  SQL := 'DELETE FROM lembretes WHERE idlembrete = ' +
+    IntToStr(pLembrete.IDLembrete);
+  Result := ExecutarComando(SQL) > 0;
 end;
 
 function TLembreteDAO.ListarPorTitulo(pConteudo: string)
@@ -90,7 +94,8 @@ begin
   else
 
   begin
-    SQL := SQL + ' WHERE F.titulo LIKE ' + QuotedStr('%' + pConteudo + '%');
+    SQL := SQL + ' WHERE F.titulo LIKE ' + QuotedStr('%' + pConteudo + '%') +
+      ' OR F.descricao LIKE ' + QuotedStr('%' + pConteudo + '%');
   end;
 
   SQL := SQL + ' ORDER BY F.datahora ';
@@ -115,6 +120,7 @@ begin
     FListaLembrete.Add(TLembrete.Create);
     FListaLembrete[I].IDLembrete := Ds.FieldByName('idlembrete').AsInteger;
     FListaLembrete[I].titulo := Ds.FieldByName('titulo').AsString;
+    FListaLembrete[I].descricao := Ds.FieldByName('descricao').AsString;
     FListaLembrete[I].dataHora := Ds.FieldByName('datahora').AsDateTime;
 
     Ds.Next;

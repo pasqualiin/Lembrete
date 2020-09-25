@@ -21,17 +21,17 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure PreencherLembrete;
   private
     { Private declarations }
+    LembreteDAO: TLembreteDAO;
+    Lembrete: Tlembrete;
+    procedure PreencherLembrete;
   public
     { Public declarations }
   end;
 
 var
   FrmInserirLembrete: TFrmInserirLembrete;
-  LembreteDAO: TLembreteDAO;
-  Lembrete: Tlembrete;
 
 implementation
 
@@ -49,18 +49,18 @@ end;
 
 procedure TFrmInserirLembrete.FormCreate(Sender: TObject);
 begin
-  LembreteDAO := TLembreteDAO.Create;
-  Lembrete := Tlembrete.Create;
   DTDataHora.DateTime := Now;
+  Lembrete := Tlembrete.Create;
+  LembreteDAO := TLembreteDAO.Create;
 end;
 
 procedure TFrmInserirLembrete.FormDestroy(Sender: TObject);
 begin
   Try
-    if Assigned(LembreteDAO) then
-      FreeAndNil(LembreteDAO);
     if Assigned(Lembrete) then
       FreeAndNil(Lembrete);
+    if Assigned(LembreteDAO) then
+      FreeAndNil(LembreteDAO);
   except
     on e: exception do
       raise exception.Create(e.Message);

@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.Buttons, Vcl.StdCtrls,
   Vcl.ExtCtrls, uLembreteDAO, System.Generics.Collections, uLembrete, uDM,
-  uFrmInserirLembrete, FireDAC.DApt, uFrmEditarLembrete;
+  uFrmInserirLembrete, FireDAC.DApt, uFrmEditarLembrete, System.UITypes;
 
 type
   TFormConsulta = class(TForm)
@@ -27,11 +27,13 @@ type
     procedure BtnEditarClick(Sender: TObject);
     procedure BtnBuscarClick(Sender: TObject);
     procedure ListView1DblClick(Sender: TObject);
+    procedure BtnExcluirClick(Sender: TObject);
   private
     { Private declarations }
     LembreteDAO: TLembreteDAO;
     procedure CarregarColecao;
     procedure PreencherListView(pListaLembrete: TList<TLembrete>);
+    procedure EditarLembrete;
   public
     { Public declarations }
   end;
@@ -53,13 +55,19 @@ end;
 
 procedure TFormConsulta.BtnEditarClick(Sender: TObject);
 begin
-  try
-    FrmEditarLembrete := TFrmEditar.Create(Self,
-      TLembrete(ListView1.ItemFocused.Data));
-    FrmEditarLembrete.ShowModal;
-    CarregarColecao;
-  finally
-    FreeAndNil(FrmEditarLembrete);
+  EditarLembrete;
+end;
+
+procedure TFormConsulta.BtnExcluirClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja remover este item?', mtConfirmation, [mbYes, mbNo], 1) = mrYes
+  then
+  begin
+    if ListView1.ItemIndex > -1 then
+    begin
+      if LembreteDAO.Deletar(TLembrete(ListView1.ItemFocused.Data)) then
+        CarregarColecao;
+    end;
   end;
 end;
 
@@ -85,27 +93,7 @@ begin
   End;
 end;
 
-procedure TFormConsulta.FormCreate(Sender: TObject);
-begin
-  DM := TDM.Create(Self);
-  LembreteDAO := TLembreteDAO.Create;
-  CarregarColecao;
-end;
-
-procedure TFormConsulta.FormDestroy(Sender: TObject);
-begin
-  Try
-    if Assigned(LembreteDAO) then
-      FreeAndNil(LembreteDAO);
-    if Assigned(DM) then
-      FreeAndNil(DM);
-  Except
-    on e: exception do
-      raise exception.Create(e.Message);
-  End;
-end;
-
-procedure TFormConsulta.ListView1DblClick(Sender: TObject);
+procedure TFormConsulta.EditarLembrete;
 begin
   try
     FrmEditarLembrete := TFrmEditar.Create(Self,
@@ -115,6 +103,30 @@ begin
   finally
     FreeAndNil(FrmEditarLembrete);
   end;
+end;
+
+procedure TFormConsulta.FormCreate(Sender: TObject);
+begin
+  DM := TDM.Create(Self);
+  LembreteDAO := TLembreteDAO.Create;
+end;
+
+procedure TFormConsulta.FormDestroy(Sender: TObject);
+begin
+  Try
+    if Assigned(LembreteDAO) then
+      FreeAndNil(LembreteDAO);
+    //if Assigned(DM) then
+     // FreeAndNil(DM);
+  Except
+    on e: exception do
+      raise exception.Create(e.Message);
+  End;
+end;
+
+procedure TFormConsulta.ListView1DblClick(Sender: TObject);
+begin
+  EditarLembrete;
 end;
 
 procedure TFormConsulta.PreencherListView(pListaLembrete: TList<TLembrete>);

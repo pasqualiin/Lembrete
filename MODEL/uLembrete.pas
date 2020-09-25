@@ -11,7 +11,6 @@ type
     FTitulo: string;
     FDescricao: string;
     FDataHora: TDateTime;
-    constructor Create;
 
     procedure setTitulo(Value: String);
     procedure setDescricao(Value: String);
@@ -24,6 +23,7 @@ type
     function getIDLembrete: integer;
 
   public
+    constructor Create;
     property IDLembrete: integer read getIDLembrete write setIDLembrete;
     property titulo: string read getTitulo write setTitulo;
     property descricao: string read getDescricao write setDescricao;

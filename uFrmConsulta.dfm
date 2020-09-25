@@ -319,6 +319,7 @@ object FormConsulta: TFormConsulta
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FF00008200008200018900059D00059C00018900008200
         0082FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      OnClick = BtnExcluirClick
     end
   end
   object ListView1: TListView
@@ -339,12 +340,7 @@ object FormConsulta: TFormConsulta
         Caption = 'Data/Hora'
         Width = 150
       end>
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
+    RowSelect = True
     TabOrder = 3
     ViewStyle = vsReport
     OnDblClick = ListView1DblClick

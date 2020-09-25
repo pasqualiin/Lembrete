@@ -6,7 +6,7 @@ uses
   FireDAC.Comp.Client, uDM, System.SysUtils;
 
 type
-  TBaseDAO = class
+  TBaseDAO = class(TObject)
   private
 
   protected
@@ -24,7 +24,7 @@ implementation
 constructor TBaseDAO.Create;
 begin
   inherited Create;
-  FQuery := TFDQuery.Create(nil);
+  FQuery := TFDQuery.Create(Nil);
   FQuery.Connection := DM.Conexao;
 end;
 
@@ -32,9 +32,7 @@ destructor TBaseDAO.Destroy;
 begin
   try
     if Assigned(FQuery) then
-    begin
       FreeAndNil(FQuery);
-    end;
   except
     on e: exception do
       raise exception.Create(e.Message);
@@ -57,7 +55,7 @@ end;
 function TBaseDAO.RetornarDataSet(pSQL: string): TFDQuery;
 begin
   FQuery.SQL.Text := pSQL;
-  FQuery.Active := true;
+  FQuery.Active := True;
   Result := FQuery;
 end;
 

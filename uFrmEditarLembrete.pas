@@ -82,8 +82,6 @@ begin
   Try
     if Assigned(LembreteDAO) then
       FreeAndNil(LembreteDAO);
-    if Assigned(Lembrete) then
-      FreeAndNil(Lembrete);
   except
     on e: Exception do
       raise Exception.Create(e.Message);
@@ -100,7 +98,7 @@ end;
 procedure TFrmEditar.PreencherTela;
 begin
   EdtTitulo.Text := Lembrete.titulo;
-  MDescricao.Lines.Text := Lembrete.descricao;
+  MDescricao.Text := Lembrete.descricao;
   DTDataHora.DateTime := Lembrete.dataHora;
 end;
 
